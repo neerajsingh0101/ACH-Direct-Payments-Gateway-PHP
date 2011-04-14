@@ -14,4 +14,5 @@ The project requires:
 Examples
 ---------------------
 getTransaction.php - example which returns a transaction information
+
 searchTransactions.php - example which returns array of transactions in a specific day
