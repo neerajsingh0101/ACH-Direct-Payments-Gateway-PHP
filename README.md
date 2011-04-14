@@ -5,12 +5,6 @@ This project provides PHP library to use ACH Direct Web Services.
 
 http://www.paymentsgateway.com/developerDocumentation/Integration/webservices/merchantservice.aspx
 
-Key Features
-------------
-* Authorization with 3scale based on app_id & app_key
-* XML & JSON friendly formatted responses
-
-
 The project requires:
 
 * Zend Framework 1.11 (http://framework.zend.com/)
