@@ -47,7 +47,8 @@ class Services_ACHDirect
 	 * @param string $apiLoginID
 	 * @param string $secureTransactionKey
 	 */
-    public function __construct($merchantID, $apiLoginID, $secureTransactionKey, $environment = 'live') {
+    public function __construct($merchantID, $apiLoginID, $secureTransactionKey, $environment = 'live')
+    {
     	$this->_merchantID = $merchantID;
     	$this->_apiLoginID = $apiLoginID;
     	$this->_secureTransactionKey = $secureTransactionKey;
@@ -68,7 +69,8 @@ class Services_ACHDirect
 	/**
 	 * @see http://www.paymentsgateway.com/developerDocumentation/Integration/webservices/merchantservice.aspx#gettransactionauthticket
 	 */
-	private function generateAuthToken() {
+	private function generateAuthToken()
+	{
        	$time = time();
 		$multiplied = $time * 10000000; //adjust to microseconds
 		$addedtime = $multiplied + 621355968000000000; //adjust date from epoch to .net. not exact but close.
@@ -90,8 +92,8 @@ class Services_ACHDirect
 	 * @see http://www.paymentsgateway.com/developerDocumentation/Integration/webservices/merchantservice.aspx#GetTransaction
 	 * @param string $transactionID
 	 */
-	public function getTransaction($transactionID) {
-        
+	public function getTransaction($transactionID)
+	{
 		$params = array(
 			"ticket" => $this->generateAuthToken(), 
 			"MerchantID" =>$this->_merchantID, 
@@ -120,7 +122,8 @@ class Services_ACHDirect
 	 * @param Zend_Date $startDate
 	 * @param Zend_Date $endDate
 	 */
-	public function searchTransactions(Zend_Date $startDate, Zend_Date $endDate) {
+	public function searchTransactions(Zend_Date $startDate, Zend_Date $endDate)
+	{
 		$range = new Services_ACHDirect_Range();
 		$range->MerchantIDs = $this->_merchantID;
 		$range->StartDate = $startDate->toString('YYYY-MM-dd');
@@ -147,8 +150,8 @@ class Services_ACHDirect
 	 * 
 	 * @param Zend_Date $date
 	 */
-	public function searchTransactionsByDay(Zend_Date $date) {
-		
+	public function searchTransactionsByDay(Zend_Date $date)
+	{
 		$params = array(
 			'ticket' => $this->generateAuthToken(), 
 			'MerchantID' => $this->_merchantID,
@@ -191,8 +194,8 @@ class Services_ACHDirect
 	 * @see http://www.paymentsgateway.com/developerDocumentation/Integration/webservices/merchantservice.aspx#GetTransaction
 	 * @param string $transactionID
 	 */
-	public function searchSettleActivity(Zend_Date $startDate, Zend_Date $endDate) {
-        
+	public function searchSettleActivity(Zend_Date $startDate, Zend_Date $endDate)
+	{
 		$range = new Services_ACHDirect_Range();
 		$range->MerchantIDs = $this->_merchantID;
 		$range->StartDate = $startDate->toString('YYYY-MM-dd');
@@ -218,7 +221,8 @@ class Services_ACHDirect
 	 * @param unknown_type $key
 	 * @param unknown_type $data
 	 */
-    protected function hmac ($key, $data) {
+    protected function hmac ($key, $data)
+    {
 		$b = 64; // byte length for md5
 		
 		if (strlen($key) > $b) {

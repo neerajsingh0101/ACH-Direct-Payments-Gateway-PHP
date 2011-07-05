@@ -7,8 +7,8 @@ class Services_ACHDirect_Transaction
 	/**
 	 * get the payment type (credit card or echeck)
 	 */
-	public function paymentType() {
-		
+	public function paymentType()
+	{
 		if ($this->AccountType == "C" || $this->AccountType == "S") {
 			return Services_ACHDirect_Transaction::ECHECK;
 		} else {	
